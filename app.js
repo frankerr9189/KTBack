@@ -22,7 +22,6 @@ const orderRoutes = require("./routes/orders");
 const braintreeRoutes = require('./routes/braintree');
 
 
-
 //db connection
 mongoose.connect(
     process.env.MONGO_URI,
@@ -35,7 +34,7 @@ mongoose.connection.on('error', err=>{
 
 //middlewares
 app.use(morgan('dev'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb', extended: true}));
 app.use(cookieParser());
 app.use(expressValidator());
 app.use(cors());

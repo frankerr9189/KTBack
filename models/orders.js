@@ -1,19 +1,13 @@
-import mongoose from 'mongoose';
-const shippingSchema = {
-    ShipName: {type: String, required: true},
-    emailAddress: {type: String, required: true},
-    address: {type: String, required: true},
-    city: {type: String, required: true},
-    postalCode: {type: String, required: true},
-    country: {type: String, required: true},
-};
+const mongoose = require('mongoose')
+const { ObjectId } = mongoose.Schema;
 
 const cartItemSchema = new mongoose.Schema({
-    name: {type: String, required: true},
-    qty: {type: Number, required: true},
-    choice: {type: String},
-    toppings: {type: String},
-    price: {type: String, required: true},
+    product: { type: ObjectId, ref: "Product" },
+    name: String,
+    quantity: {type: Number},
+    //choice: {type: String},
+    //toppings: {type: String},
+    price: {type: Number},
 });
 
 const orderSchema = new mongoose.Schema({
@@ -26,16 +20,20 @@ const orderSchema = new mongoose.Schema({
     ShipState: {type: String},
     ShipZip: {type: String},
     method: {type: Boolean},
-    payment: paymentSchema,
+    //payment: paymentSchema,
     subTotal: {type: Number},
     taxPrice: {type: Number},
     processingFee:{type: Number},
     totalPrice: {type: Number},
-    isPaid: {type: Boolean, default: false},
-    paidAt: {type: Date},
+    status: {
+        type: String,
+        default: "Not Processed",
+        enum: ["Not Processed", "Completed", "Cancelled"]
+    }
+    // isPaid: {type: Boolean, default: false},
+    // paidAt: {type: Date},
 }, {
     timestamps: true
 });
 
-const orderModel = mongoose.model("Order", orderSchema);
-export default orderModel;
+module.exports = mongoose.model("Order", orderSchema);

@@ -1,6 +1,9 @@
+const Order = require('../models/orders');
+const {errorHandler} = require('../helpers/dbErrorHandler');
+
 exports.create = (req, res) => {
-        console.log('GUEST CREATE order: ', req.body);
-        req.body.order = req.profile;
+        console.log('Create Order: ', req.body);
+        req.body.order.user = req.profile;
         const order = new Order(req.body.order);
          order.save((error, data)=> {
              if(error) {
