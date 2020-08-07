@@ -6,7 +6,7 @@ const cartItemSchema = new mongoose.Schema({
     name: String,
     quantity: {type: Number},
     //choice: {type: String},
-    //toppings: {type: String},
+    toppings: [],
     price: {type: Number},
 });
 
@@ -19,7 +19,7 @@ const orderSchema = new mongoose.Schema({
     ShipCity: {type: String},
     ShipState: {type: String},
     ShipZip: {type: String},
-    method: {type: Boolean},
+    method: {type: String},
     //payment: paymentSchema,
     subTotal: {type: Number},
     taxPrice: {type: Number},
