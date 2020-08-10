@@ -19,6 +19,16 @@ exports.generateToken = (req, res) => {
     });
 };
 
+exports.generateGuestToken = (req, res) => {
+    gateway.clientToken.generate({}, function(err, response) {
+        if(err){
+            res.status(500).send(err);
+        }else {
+            res.send(response);
+        }
+    });
+};
+
 exports.processPayment = (req, res) => {
     let nonceFromTheClient = req.body.paymentMethodNonce;
     let amountFromTheClient = req.body.amount;

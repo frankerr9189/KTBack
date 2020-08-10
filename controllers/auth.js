@@ -74,3 +74,29 @@ exports.isAdmin = (req, res, next) => {
     }
     next();
 };
+
+exports.guest = (req, res) => {
+    //find user based on email
+    const {email, password} = req.body;
+    User.findOne({email}, (err, user)=> {
+        if(err || !user){
+            return res.status(400).json({
+                error: 'User with that email does not exist. Please sign up'
+            });
+        }
+        //if user is found, make sure the email and password match
+        //create authenticate method in user model too
+        if(!user.authenticate(password)){
+            return res.status(401).json({
+                error: 'Email and password do not match!'
+            });
+        }
+        // generate a signed token with user id and secret
+        const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET);
+        //persist the token as 't' any name would work. in cookie with expiry date
+        res.cookie('t', token, {expire: new Date() + 9999});
+        // return response with user and token to frontend client
+        const {_id, name, email, role} = user;
+        return res.json({token, user:{_id, email, name, role}});
+    });
+};

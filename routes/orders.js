@@ -6,6 +6,7 @@ const {userById} = require("../controllers/user");
 const {create, listOrders, getStatusValues, orderById, updateOrderStatus, guestShipping, getMethodValues} = require("../controllers/order");
 
 router.post('/order/create/:userId', requireSignin, isAuth, create);
+router.post('/order/create/guest', create);
 
 router.get('/order/list/:userId', requireSignin, isAuth, isAdmin, listOrders);
 router.get('/order/status-values/:userId', requireSignin, isAuth, isAdmin, getStatusValues);
