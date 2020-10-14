@@ -87,7 +87,7 @@ const endpointSecret = 'whsec_HmQYittUBM6bWMQgaV2Aac2W62Z5p52O';
   };
 
   // Stripe requires the raw body to construct the event
-   app.post('/webhook', bodyParser.raw({type: 'application/json'}), (request, response) => {
+   app.post('http://www.koastaltechnologydemo.com/webhook', bodyParser.raw({type: 'application/json'}), (request, response) => {
      let event;
      
      try {
