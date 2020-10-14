@@ -25,10 +25,11 @@ const orderSchema = new mongoose.Schema({
     taxPrice: {type: Number},
     processingFee:{type: Number},
     totalPrice: {type: Number},
+    sessionData: {type: String},
     status: {
         type: String,
-        default: "Not Processed",
-        enum: ["Not Processed", "Completed", "Cancelled"]
+        default: "DO NOT PROCESS",
+        enum: ["DO NOT PROCESS", "Not Processed", "Completed", "Cancelled"]
     }
     // isPaid: {type: Boolean, default: false},
     // paidAt: {type: Date},
