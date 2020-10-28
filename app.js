@@ -61,7 +61,7 @@ const stripe = require('stripe')('sk_test_51HJqHJGl9xwp0fdr6IujPQSYcrQ1lHHj8VrSn
   });
 
 // Find your endpoint's secret in your Dashboard's webhook settings
-const endpointSecret = 'whsec_HmQYittUBM6bWMQgaV2Aac2W62Z5p52O';
+const endpointSecret = 'whsec_RFDFqMz4r4NTgm2i91bPF5uFiXzYqVTS';
   
 // Stripe requires the raw body to construct the event
 // Use JSON parser for all non-webhook routes
@@ -87,7 +87,7 @@ const endpointSecret = 'whsec_HmQYittUBM6bWMQgaV2Aac2W62Z5p52O';
   };
 
   // Stripe requires the raw body to construct the event
-   app.post('http://www.koastaltechnologydemo.com/webhook', bodyParser.raw({type: 'application/json'}), (request, response) => {
+   app.post('/webhook', bodyParser.raw({type: 'application/json'}), (request, response) => {
      let event;
      
      try {
