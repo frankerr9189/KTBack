@@ -105,6 +105,4 @@ const endpointSecret = 'whsec_RFDFqMz4r4NTgm2i91bPF5uFiXzYqVTS';
 
 const port = process.env.PORT || 8000;
 
-app.listen(port, ()=> {
-    console.log(`Server is running on port ${port}`);
-});
+app.listen(port, ()=> console.log(`Server is running on port ${port}`));
