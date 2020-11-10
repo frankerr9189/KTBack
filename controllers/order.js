@@ -1,8 +1,8 @@
 const Order = require('../models/orders');
 const {errorHandler} = require('../helpers/dbErrorHandler');
 const pricePerTopping = 0.5;
-const config = require('../config/config');
-const stripe = require('stripe')(config.stripe_secret_key);
+const configs = require('../configs/configs');
+const stripe = require('stripe')(configs.stripe_secret_key);
 const stripeAccountId = 'acct_1HRNLcDQrRsPJFuN'; //'acct_1HRNJ5IsucVTpH7r' acct_1HRoIZEdg2uAuc8C
 
 

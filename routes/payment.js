@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const config = require('../config/config');
+const config = require('../configs/configs');
 const stripe = require('stripe')(config.stripe_secret_key);
 const express = require("express");
 const router = express.Router();
