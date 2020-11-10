@@ -10,9 +10,8 @@ const cors = require("cors");
 const Order = require('./models/orders');
 const {errorHandler} = require('./helpers/dbErrorHandler');
 
-const dotenv = require('dotenv');
-dotenv.config();
-
+// const dotenv = require('dotenv');
+// dotenv.config();
 require('dotenv').config();
 
 //import routes
