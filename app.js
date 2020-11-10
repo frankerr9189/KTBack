@@ -54,7 +54,7 @@ app.use('/api', productRoutes);
 app.use('/api', orderRoutes);
 app.use("/api", braintreeRoutes);
 app.use('/api', accountRoutes);
-
+/*
 const stripe = require('stripe')('sk_test_51HJqHJGl9xwp0fdr6IujPQSYcrQ1lHHj8VrSnkuHql4mfPPxCAEw9qDps6ISYovgY9An6TIhf7KQoYBPAKktFCu20070aqUZUJ', {
     timeout: 60 * 1000, // 60 seconds
   });
@@ -101,7 +101,8 @@ const endpointSecret = 'whsec_RFDFqMz4r4NTgm2i91bPF5uFiXzYqVTS';
      // Return a 200 response to acknowledge receipt of the event
     // response.json({received: true});
    });
-
+*/ 
+//end of comment
 const port = process.env.PORT || 8000;
 
 app.listen(port, ()=> console.log(`Server is running on port ${port}`));
