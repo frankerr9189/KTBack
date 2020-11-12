@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -12,7 +13,7 @@ const {errorHandler} = require('./helpers/dbErrorHandler');
 
 // const dotenv = require('dotenv');
 // dotenv.config();
-require('dotenv').config();
+
 
 //import routes
 const authRoutes = require('./routes/auth');
@@ -20,8 +21,8 @@ const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const orderRoutes = require("./routes/orders");
-const braintreeRoutes = require('./routes/braintree');
-const accountRoutes = require('./routes/payment')
+//const braintreeRoutes = require('./routes/braintree');
+//const accountRoutes = require('./routes/payment')
 
 //db connection
 mongoose.connect(
@@ -52,9 +53,9 @@ app.use('/api', userRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', productRoutes);
 app.use('/api', orderRoutes);
-app.use("/api", braintreeRoutes);
-app.use('/api', accountRoutes);
-/*
+//app.use("/api", braintreeRoutes);
+//app.use('/api', accountRoutes);
+
 const stripe = require('stripe')('sk_test_51HJqHJGl9xwp0fdr6IujPQSYcrQ1lHHj8VrSnkuHql4mfPPxCAEw9qDps6ISYovgY9An6TIhf7KQoYBPAKktFCu20070aqUZUJ', {
     timeout: 60 * 1000, // 60 seconds
   });
@@ -101,8 +102,7 @@ const endpointSecret = 'whsec_RFDFqMz4r4NTgm2i91bPF5uFiXzYqVTS';
      // Return a 200 response to acknowledge receipt of the event
     // response.json({received: true});
    });
-*/ 
-//end of comment
+
 const port = process.env.PORT || 8000;
 
 app.listen(port, ()=> console.log(`Server is running on port ${port}`));
