@@ -77,7 +77,7 @@ const endpointSecret = 'whsec_RFDFqMz4r4NTgm2i91bPF5uFiXzYqVTS';
   };
 
   // Stripe requires the raw body to construct the event
-   app.post('http://koastaltechnologydemo.com/webhook', bodyParser.raw({type: 'application/json'}), (request, response) => {
+   app.post('/webhook', bodyParser.raw({type: 'application/json'}), (request, response) => {
      let event;
      
      try {
@@ -100,7 +100,7 @@ const endpointSecret = 'whsec_RFDFqMz4r4NTgm2i91bPF5uFiXzYqVTS';
          return response.status(400).end();
      };
      // Return a 200 response to acknowledge receipt of the event
-    // response.json({received: true});
+    response.json({received: true});
    });
 
 const port = process.env.PORT || 8000;
