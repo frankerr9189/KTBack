@@ -40,8 +40,8 @@ const session = await stripe.checkout.sessions.create({
       payment_intent_data: {
         application_fee_amount: finalProcessingFee * 100,
       },
-    success_url: "http://localhost:3000/thankyou",
-    cancel_url: "http://localhost:3000/checkout",
+    success_url: "https://koastaltechnologydemo.com/thankyou",
+    cancel_url: "https://koastaltechnologydemo.com/checkout",
   },{
       stripeAccount: stripeAccountId,
   });
